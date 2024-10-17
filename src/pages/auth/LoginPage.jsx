@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      <p className="text-dark-100 mb-5 text-center text-2xl font-bold">Login</p>
+      <p className="mb-5 text-center text-2xl font-bold text-dark-100">Login</p>
       <form className="flex flex-col gap-4">
         <FormField name="email" label="Email" control={control} Component={TextInput} />
         <FormField
@@ -21,7 +21,7 @@ const LoginPage = () => {
         />
         <Button variant="contained">Sign in</Button>
       </form>
-      <p className="text-md text-dark-100 mt-4 text-center">
+      <p className="text-md mt-4 text-center text-dark-100">
         New on our platform?
         <Link to="/register" className="ml-1 text-[#246AA3]">
           Create an account
