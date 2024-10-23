@@ -18,7 +18,7 @@ const RootLayout = () => {
       <Suspense fallback={<p>Loading...</p>}>
         <Outlet />
       </Suspense>
-      <Snackbar open={open} autoHideDuration={4000} onClose={() => dispatch(closeSnackbar())}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={() => dispatch(closeSnackbar())}>
         <Alert severity={type} variant="filled" sx={{ width: "100%" }}>
           {message}
         </Alert>
