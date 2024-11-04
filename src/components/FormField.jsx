@@ -12,7 +12,7 @@ const FormField = ({ control, label, name, type, error, Component }) => {
           return (
             <Component
               onChange={onChange}
-              value={value || ""}
+              value={value}
               name={name}
               control={control}
               type={type}

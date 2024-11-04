@@ -18,7 +18,11 @@ const OTPVerifyPage = () => {
 
   const [verifyOTP, { data = {}, isLoading, error, isError, isSuccess }] = useVerifyOTPMutation();
 
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      otp: "",
+    },
+  });
 
   function onSubmit(formData) {
     verifyOTP({ otp: formData.otp, email: location?.state });

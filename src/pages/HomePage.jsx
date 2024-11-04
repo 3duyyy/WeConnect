@@ -1,15 +1,19 @@
-import { Button } from "@mui/material";
-import { useState } from "react";
+import FriendRequest from "@components/FriendRequest";
+import PostCreation from "@components/PostCreation";
+import PostList from "@components/PostList";
+import Sidebar from "@components/Sidebar";
 
 function HomePage() {
-  const [count, setCount] = useState(0);
   return (
-    <div className="flex flex-col items-center justify-center">
-      <p>HomePage</p>
-      <p>Count: {count}</p>
-      <Button variant="contained" onClick={() => setCount(count + 1)}>
-        SUBMIT
-      </Button>
+    <div className="flex gap-4 bg-dark-200 p-6">
+      <Sidebar />
+      <div className="flex-1">
+        <PostCreation />
+        <PostList />
+      </div>
+      <div className="hidden w-64 sm:block">
+        <FriendRequest />
+      </div>
     </div>
   );
 }
