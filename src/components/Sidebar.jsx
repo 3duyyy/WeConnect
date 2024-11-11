@@ -1,6 +1,6 @@
-import { useTheme } from "@emotion/react";
+import { useDetectLayout } from "@hooks/index";
 import { AccountCircle, HomeOutlined, Hub, Language, Message, People } from "@mui/icons-material";
-import { Drawer, List, ListSubheader, useMediaQuery } from "@mui/material";
+import { Drawer, List, ListSubheader } from "@mui/material";
 import { toggleDrawer } from "@redux/slices/settingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const SidebarContent = () => {
   return (
     <div className="flex w-64 flex-col gap-4">
-      <List className="flex flex-col gap-2 rounded-md bg-white !p-4 shadow">
+      <List className="card flex flex-col gap-2 !p-4">
         <Link to="/" className="flex items-center gap-1">
           <HomeOutlined fontSize="small" />
           New Feeds
@@ -27,7 +27,7 @@ const SidebarContent = () => {
         </Link>
       </List>
 
-      <List className="flex flex-col gap-2 rounded-md bg-white !p-4 shadow">
+      <List className="card flex flex-col gap-2 !p-4">
         <ListSubheader className="mb-2 !px-0 !leading-none">Settings</ListSubheader>
         <Link to="/setting/account" className="flex items-center gap-1">
           <AccountCircle fontSize="small" />
@@ -43,14 +43,13 @@ const SidebarContent = () => {
 };
 
 const Sidebar = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMediumLayout } = useDetectLayout();
 
   const isShowDrawer = useSelector((state) => state.settings.isShowDrawer);
 
   const dispatch = useDispatch();
 
-  return isMobile ? (
+  return isMediumLayout ? (
     <div>
       <Drawer
         open={isShowDrawer}

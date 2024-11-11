@@ -7,11 +7,11 @@ function HomePage() {
   return (
     <div className="flex gap-4 bg-dark-200 p-6">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex flex-1 flex-col gap-4">
         <PostCreation />
         <PostList />
       </div>
-      <div className="hidden w-64 sm:block">
+      <div className="hidden w-64 md:block">
         <FriendRequest />
       </div>
     </div>

@@ -1,6 +1,4 @@
-import { useTheme } from "@emotion/react";
-import { useLogout } from "@hooks/useLogout";
-import { useUserInfo } from "@hooks/useUserInfo";
+import { useDetectLayout, useLogout, useUserInfo } from "@hooks/index";
 import { Notifications, SearchOutlined, Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
@@ -11,7 +9,6 @@ import {
   MenuItem,
   TextField,
   Toolbar,
-  useMediaQuery,
 } from "@mui/material";
 import { toggleDrawer } from "@redux/slices/settingSlice";
 import { useState } from "react";
@@ -29,8 +26,11 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const handleUserProfileClick = (e) => {
+    setAnchorEl(e.target);
+  };
+
+  const { isMediumLayout } = useDetectLayout();
 
   const dispatch = useDispatch();
 
@@ -53,15 +53,11 @@ const Header = () => {
     </Menu>
   );
 
-  const handleUserProfileClick = (e) => {
-    setAnchorEl(e.target);
-  };
-
   return (
     <div>
-      <AppBar color="white" position="sticky" className="py-4">
+      <AppBar color="white" position="sticky" className="py-2">
         <Toolbar className="!min-h-fit justify-between">
-          {isMobile ? (
+          {isMediumLayout ? (
             <IconButton onClick={() => dispatch(toggleDrawer())}>
               <MenuIcon />
             </IconButton>
@@ -90,7 +86,7 @@ const Header = () => {
             </div>
           )}
           <div>
-            {isMobile && (
+            {isMediumLayout && (
               <IconButton>
                 <SearchOutlined />
               </IconButton>
